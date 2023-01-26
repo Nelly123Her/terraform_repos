@@ -1,0 +1,45 @@
+{
+    "builders": [{
+      "type": "azure-arm",
+  
+      "client_id": "",
+      "client_secret": "",
+      "tenant_id": "",
+      "subscription_id": "",
+    
+      "managed_image_resource_group_name": "",
+      "managed_image_name": "",
+  
+      "os_type": "Linux",
+      "image_publisher": "Canonical",
+      "image_offer": "UbuntuServer",
+      "image_sku": "18_04-LTS-Gen2",
+  
+      "azure_tags": {
+          "Application Name": "",
+          "ApplicationOwner": "",
+          "Approver Name" : "",
+          "Business Unit" : "",
+          "Cost Center" :  "",
+          "Data Profile" : "",
+          "Dept" : "",
+          "Disaster Recovery" : "",
+          "Environment" : "",
+          "Owner Name" : "",
+          "Project Name" : ""
+      },
+  
+      "location": "East US 2",
+      "vm_size": "Standard_DS5_v2"
+    }],
+    "provisioners": [
+      {
+        "execute_command": "echo 'Aprovison ADO AGENT' | {{.Vars}} sudo -S -E sh -eux '{{.Path}}'",
+        "scripts": [
+          "setup.sh"
+        ],
+        "type": "shell"
+      }
+    ]
+  }
+    
